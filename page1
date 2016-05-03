@@ -1,0 +1,64 @@
+#!/usr/bin/ruby -w
+
+puts "Hello, Ruby!";
+
+--------------------
+
+$irb
+irb 0.6.1(99/09/16)
+irb(main):001:0> def hello
+irb(main):002:1> out = "Hello World"
+irb(main):003:1> puts out
+irb(main):004:1> end
+nil
+irb(main):005:0> hello
+Hello World
+nil
+irb(main):006:0>
+
+---------------------
+
+$ ruby test.rb
+
+---------------------
+
+a + b is interpreted as a+b ( Here a is a local variable)
+a  +b is interpreted as a(+b) ( Here a is a method call)
+
+---------------------
+
+#!/usr/bin/ruby -w
+
+print <<EOF
+    This is the first way of creating
+    here document ie. multiple line string.
+EOF
+
+print <<"EOF";                # same as above
+    This is the second way of creating
+    here document ie. multiple line string.
+EOF
+
+print <<`EOC`                 # execute commands
+	echo hi there
+	echo lo there
+EOC
+
+print <<"foo", <<"bar"  # you can stack them
+	I said foo.
+foo
+	I said bar.
+bar
+
+Output:
+
+    This is the first way of creating
+    her document ie. multiple line string.
+    This is the second way of creating
+    her document ie. multiple line string.
+hi there
+lo there
+        I said foo.
+        I said bar.
+
+---------------------
