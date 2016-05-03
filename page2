@@ -1,0 +1,49 @@
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+
+Output:
+
+Initializing Ruby Program
+This is main Ruby Program
+
+----------------------------------------
+
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+END {
+   puts "Terminating Ruby Program"
+}
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+
+Output:
+
+Initializing Ruby Program
+This is main Ruby Program
+Terminating Ruby Program
+
+-----------------------------------------
+
+# I am a comment. Just ignore me.
+
+name = "Madisetti" # This is again comment
+
+# This is a comment.
+# This is a comment, too.
+# This is a comment, too.
+# I said that already.
+
+=begin
+This is a comment.
+This is a comment, too.
+This is a comment, too.
+I said that already.
+=end
