@@ -1,0 +1,296 @@
+#!/usr/bin/ruby -w
+
+print <<EOF
+    This is the first way of creating
+    here document ie. multiple line string.
+EOF
+
+print <<"EOF";                # same as above
+    This is the second way of creating
+    here document ie. multiple line string.
+EOF
+
+print <<`EOC`                 # execute commands
+	echo hi there
+	echo lo there
+EOC
+
+print <<"foo", <<"bar"  # you can stack them
+	I said foo.
+foo
+	I said bar.
+bar
+
+Output:
+
+This is the first way of creating
+    her document ie. multiple line string.
+    This is the second way of creating
+    her document ie. multiple line string.
+hi there
+lo there
+        I said foo.
+        I said bar.
+
+-------------------------------------------------------
+
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+
+Output:
+
+Initializing Ruby Program
+This is main Ruby Program
+
+---------------------------------------------------------
+
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+END {
+   puts "Terminating Ruby Program"
+}
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+
+Output:
+
+Initializing Ruby Program
+This is main Ruby Program
+Terminating Ruby Program
+
+---------------------------------------------------------
+
+class Customer
+   @@no_of_customers=0
+   def initialize(id, name, addr)
+      @cust_id=id
+      @cust_name=name
+      @cust_addr=addr
+   end
+end
+
+cust1=Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2=Customer.new("2", "Poul", "New Empire road, Khandala")
+
+------------------------------------------------------------------
+
+class Sample
+   def function
+      statement 1
+      statement 2
+   end
+end
+
+---------------
+
+class Sample
+   def hello
+      puts "Hello Ruby!"
+   end
+end
+
+------
+
+#!/usr/bin/ruby
+
+class Sample
+   def hello
+      puts "Hello Ruby!"
+   end
+end
+
+# Now using above class to create objects
+object = Sample. new
+object.hello
+
+------
+
+#!/usr/bin/ruby
+
+$global_variable = 10
+class Class1
+  def print_global
+     puts "Global variable in Class1 is #$global_variable"
+  end
+end
+class Class2
+  def print_global
+     puts "Global variable in Class2 is #$global_variable"
+  end
+end
+
+class1obj = Class1.new
+class1obj.print_global
+class2obj = Class2.new
+class2obj.print_global
+
+Output:
+
+Global variable in Class1 is 10
+Global variable in Class2 is 10
+---------------
+
+#!/usr/bin/ruby
+
+class Customer
+   def initialize(id, name, addr)
+      @cust_id=id
+      @cust_name=name
+      @cust_addr=addr
+   end
+   def display_details()
+      puts "Customer id #@cust_id"
+      puts "Customer name #@cust_name"
+      puts "Customer address #@cust_addr"
+    end
+end
+
+# Create Objects
+cust1=Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2=Customer.new("2", "Poul", "New Empire road, Khandala")
+
+# Call Methods
+cust1.display_details()
+cust2.display_details()
+
+Output:
+
+Customer id 1
+Customer name John
+Customer address Wisdom Apartments, Ludhiya
+Customer id 2
+Customer name Poul
+Customer address New Empire road, Khandala
+
+---------------------------------------------
+
+#!/usr/bin/ruby
+
+class Customer
+   #Class variable
+   @@no_of_customers=0
+   def initialize(id, name, addr)
+      @cust_id=id
+      @cust_name=name
+      @cust_addr=addr
+   end
+   def display_details()
+      puts "Customer id #@cust_id"
+      puts "Customer name #@cust_name"
+      puts "Customer address #@cust_addr"
+    end
+    def total_no_of_customers()
+       @@no_of_customers += 1
+       puts "Total number of customers: #@@no_of_customers"
+    end
+end
+
+# Create Objects
+cust1=Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2=Customer.new("2", "Poul", "New Empire road, Khandala")
+
+# Call Methods
+cust1.total_no_of_customers()
+cust2.total_no_of_customers()
+
+Output:
+
+Total number of customers: 1
+Total number of customers: 2
+
+-----------------------------------------------
+
+#!/usr/bin/ruby
+
+class Example
+   VAR1 = 100
+   VAR2 = 200
+   def show
+       puts "Value of first Constant is #{VAR1}"
+       puts "Value of second Constant is #{VAR2}"
+   end
+end
+
+# Create Objects
+object=Example.new()
+object.show
+
+Output:
+
+Value of first Constant is 100
+Value of second Constant is 200
+
+------------------------------------------------------
+
+#!/usr/bin/ruby -w
+
+puts 'escape using "\\"';
+puts 'That\'s right';
+
+Output:
+
+escape using "\"
+That's right
+
+-------------------------
+
+#!/usr/bin/ruby -w
+
+puts "Multiplication Value : #{24*60*60}";
+
+Output:
+
+Multiplication Value : 86400
+
+---------------
+
+ary = [  "fred", 10, 3.14, "This is a string", "last element", ]
+ary.each do |i|
+   puts i
+end
+
+Output:
+
+fred
+10
+3.14
+This is a string
+last element
+
+--------------------------------
+
+#!/usr/bin/ruby
+
+hsh = colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+hsh.each do |key, value|
+   print key, " is ", value, "\n"
+end
+
+Output:
+
+green is 240
+red is 3840
+blue is 15
+
+-----------------------
+
+#!/usr/bin/ruby
+
+(10..15).each do |n| 
+   print n, ' ' 
+end
+
+Output:
+
+10 11 12 13 14 15
+
+
+

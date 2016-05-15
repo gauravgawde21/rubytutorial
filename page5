@@ -15,3 +15,23 @@ Output:
 
 Value of first Constant is 100
 Value of second Constant is 200
+
+------------------------------------------
+
+#!/usr/bin/ruby
+
+begin
+   file = open("/unexistant_file")
+   if file
+      puts "File opened successfully"
+   end
+rescue
+      file = STDIN
+end
+print file, "==", STDIN, "\n"
+
+-------------------------------------------
+
+#!/usr/bin/ruby -w
+
+puts "Hello, Ruby!";
