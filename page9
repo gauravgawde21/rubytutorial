@@ -1,0 +1,287 @@
+$i = 0
+$num = 5
+
+while $i < $num  do
+   puts("Inside the loop i = #$i" )
+   $i +=1
+end
+
+Output:
+
+Inside the loop i = 0
+Inside the loop i = 1
+Inside the loop i = 2
+Inside the loop i = 3
+Inside the loop i = 4
+
+------------------------------
+
+#!/usr/bin/ruby
+
+$i = 0
+$num = 5
+begin
+   puts("Inside the loop i = #$i" )
+   $i +=1
+end while $i < $num
+
+Output:
+
+Inside the loop i = 0
+Inside the loop i = 1
+Inside the loop i = 2
+Inside the loop i = 3
+Inside the loop i = 4
+---------------------------------
+
+#!/usr/bin/ruby
+
+$i = 0
+$num = 5
+
+until $i > $num  do
+   puts("Inside the loop i = #$i" )
+   $i +=1;
+end
+
+Output:
+
+Inside the loop i = 0
+Inside the loop i = 1
+Inside the loop i = 2
+Inside the loop i = 3
+Inside the loop i = 4
+Inside the loop i = 5
+
+-----------------------------------
+
+#!/usr/bin/ruby
+
+$i = 0
+$num = 5
+begin
+   puts("Inside the loop i = #$i" )
+   $i +=1;
+end until $i > $num
+
+Output:
+
+Inside the loop i = 0
+Inside the loop i = 1
+Inside the loop i = 2
+Inside the loop i = 3
+Inside the loop i = 4
+Inside the loop i = 5
+
+-------------------------------------
+
+#!/usr/bin/ruby
+
+for i in 0..5
+   puts "Value of local variable is #{i}"
+end
+
+Output:
+
+Value of local variable is 0
+Value of local variable is 1
+Value of local variable is 2
+Value of local variable is 3
+Value of local variable is 4
+Value of local variable is 5
+
+------------------------------------
+
+#!/usr/bin/ruby
+
+(0..5).each do |i|
+   puts "Value of local variable is #{i}"
+end
+
+Output:
+
+Value of local variable is 0
+Value of local variable is 1
+Value of local variable is 2
+Value of local variable is 3
+Value of local variable is 4
+Value of local variable is 5
+
+---------------------------
+
+#!/usr/bin/ruby
+
+for i in 0..5
+   if i > 2 then
+      break
+   end
+   puts "Value of local variable is #{i}"
+end
+
+Output:
+
+Value of local variable is 0
+Value of local variable is 1
+Value of local variable is 2
+
+-------------------------------
+
+#!/usr/bin/ruby
+
+for i in 0..5
+   if i < 2 then
+      next
+   end
+   puts "Value of local variable is #{i}"
+end
+
+Output:
+
+Value of local variable is 2
+Value of local variable is 3
+Value of local variable is 4
+Value of local variable is 5
+
+----------------------------------
+
+#!/usr/bin/ruby
+
+for i in 0..5
+   if i < 2 then
+      puts "Value of local variable is #{i}"
+      redo
+   end
+end
+
+Ouput:
+
+This will produce the following result and will go in an infinite loop:
+
+Value of local variable is 0
+Value of local variable is 0
+
+-------------------------------------------
+
+#!/usr/bin/ruby
+
+for i in 1..5
+   retry if  i > 2
+   puts "Value of local variable is #{i}"
+end
+
+Ouput:
+
+This will produce the following result and will go in an infinite loop:
+
+Value of local variable is 1
+Value of local variable is 2
+Value of local variable is 1
+Value of local variable is 2
+Value of local variable is 1
+Value of local variable is 2
+............................
+
+------------------------------------------------
+
+#!/usr/bin/ruby
+
+def test(a1="Ruby", a2="Perl")
+   puts "The programming language is #{a1}"
+   puts "The programming language is #{a2}"
+end
+test "C", "C++"
+test
+
+Output:
+
+The programming language is C
+The programming language is C++
+The programming language is Ruby
+The programming language is Perl
+
+------------------------------
+
+def test
+   i = 100
+   j = 10
+   k = 0
+end
+
+------
+
+return
+
+OR
+
+return 12
+
+OR
+
+return 1,2,3
+
+#!/usr/bin/ruby
+
+def test
+   i = 100
+   j = 200
+   k = 300
+return i, j, k
+end
+var = test
+puts var
+
+Output:
+
+100
+200
+300
+
+-----------------------
+
+#!/usr/bin/ruby
+
+def sample (*test)
+   puts "The number of parameters is #{test.length}"
+   for i in 0...test.length
+      puts "The parameters are #{test[i]}"
+   end
+end
+sample "Zara", "6", "F"
+sample "Mac", "36", "M", "MCA"
+
+Output:
+
+The number of parameters is 3
+The parameters are Zara
+The parameters are 6
+The parameters are F
+The number of parameters is 4
+The parameters are Mac
+The parameters are 36
+The parameters are M
+The parameters are MCA
+
+--------------------------
+
+class Accounts
+   def reading_charge
+   end
+   def Accounts.return_date
+   end
+end
+
+See how the method return_date is declared. It is declared with the class name followed by a period, which is followed by the name of the method. You can access this class method directly as follows:
+
+Accounts.return_date
+
+----------------------------------
+
+alias foo bar
+alias $MATCH $&
+
+------------------------
+
+undef method-name
+undef bar
+
+

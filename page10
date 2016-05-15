@@ -1,0 +1,86 @@
+#!/usr/bin/ruby
+
+def test
+   puts "You are in the method"
+   yield
+   puts "You are again back to the method"
+   yield
+end
+test {puts "You are in the block"}
+
+Output:
+
+You are in the method
+You are in the block
+You are again back to the method
+You are in the block
+
+--------------------
+
+#!/usr/bin/ruby
+
+def test
+   yield 5
+   puts "You are in the method test"
+   yield 100
+end
+test {|i| puts "You are in the block #{i}"}
+
+Output:
+
+You are in the block 5
+You are in the method test
+You are in the block 100
+
+-----------------
+
+yield a, b
+
+test {|a, b| statement}
+
+------------------
+
+#!/usr/bin/ruby
+
+def test
+  yield
+end
+test{ puts "Hello world"}
+
+This example is the simplest way to implement a block. You call the test block by using the yield statement.
+
+But if the last argument of a method is preceded by &, then you can pass a block to this method and this block will be assigned to the last parameter. In case both * and & are present in the argument list, & should come later.
+
+#!/usr/bin/ruby
+
+def test(&block)
+   block.call
+end
+test { puts "Hello World!"}
+
+Output:
+
+Hello World!
+
+----------------------
+
+#!/usr/bin/ruby
+
+BEGIN { 
+  # BEGIN block code 
+  puts "BEGIN code block"
+} 
+
+END { 
+  # END block code 
+  puts "END code block"
+}
+  # MAIN block code 
+puts "MAIN code block"
+
+Output:
+
+BEGIN code block
+MAIN code block
+END code block
+
