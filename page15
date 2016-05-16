@@ -1,0 +1,67 @@
+months = Hash.new
+
+months = Hash.new( "month" )
+
+or
+
+months = Hash.new "month"
+
+--------------------------------
+
+#!/usr/bin/ruby
+
+months = Hash.new( "month" )
+
+puts "#{months[0]}"
+puts "#{months[72]}"
+
+Output:
+
+month
+month
+
+-----------------------------
+
+#!/usr/bin/ruby
+
+H = Hash["a" => 100, "b" => 200]
+
+puts "#{H['a']}"
+puts "#{H['b']}"
+
+Output:
+
+100
+200
+
+-------------------------------
+
+[1,"jan"] => "January"
+
+Hash[[key =>|, value]* ] or
+
+Hash.new [or] Hash.new(obj) [or]
+
+Hash.new { |hash, key| block }
+
+--------------------------------------
+
+#!/usr/bin/ruby
+
+$, = ", "
+months = Hash.new( "month" )
+
+months = {"1" => "January", "2" => "February"}
+
+keys = months.keys
+
+puts "#{keys}"
+
+Output:
+
+["1", "2"]
+
+--------------------------
+
+
+
